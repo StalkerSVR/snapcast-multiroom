@@ -1,0 +1,20 @@
+[
+{   "id": 1,
+    "station": "MonteCarlo",
+    "desc": "MonteCarlo",
+    "logo": "https://dic.academic.ru/pictures/wiki/files/82/Radiomontecarlo.jpg",
+    "stream": "https://montecarlo.hostingradio.ru/montecarlo128.mp3"
+},
+{   "id": 2,
+    "station": "MonteCarlo: Nights",
+    "desc": "MonteCarlo: Nights",
+    "logo": "https://www.radiobells.com/stations/mcnights.jpg",
+    "stream": "https://stream.pcradio.ru/rmc_mcnights-med"
+},
+{   "id": 3,
+    "station": "Радио России",
+    "desc": "Радио России",
+    "logo": "https://muz-puls.ru/wp-content/uploads/2016/07/muz-puls.ru-18.07.2016-E25nICIYkWd4gVllnqxhbUdY9AdTULny.png",
+    "stream": "http://icecast.vgtrk.cdnvideo.ru/rrzonam_mp3_128kbps"
+}
+]

@@ -1,0 +1,15 @@
+{
+  "player": {
+    "name": "Snapserver",
+    "identifier": "fda195dc-df89-4fcb-a86c-775bf1c40073"
+  },
+  "user": {
+    "id": 16560424,
+    "token": "uzTAGiPj8zGGHgLyjsxF"
+  },
+  "server": {
+    "identifier": "2f2c6d7023cdf9d12d65a2f2da251ffecdc11115",
+    "library": "3"
+  },
+  "state": null
+}

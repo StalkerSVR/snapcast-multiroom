@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  upmpdcli:
+    image: registry.local:5000/upmpdcli
+    network_mode: host
+#    command: "-h localhost -p 36601 -f UPMpd"
+    environment:
+      - TZ=Europe/Moscow
+    volumes:
+#        - ./upmpdcli.conf:/etc/upmpdcli.conf
+      - ./mpd_upmpdcli.conf:/etc/mpd.conf
+      - fifo:/fifo/
+
+    restart: unless-stopped
+
+volumes:
+  fifo:
+    external: true
+

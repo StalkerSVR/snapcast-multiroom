@@ -1,0 +1,173 @@
+version: "3"
+services:
+  mpd:
+    image: registry.local:5000/mpd
+    build: ./mpd
+    volumes:
+      - fifo:/fifo/
+      - /data/swarm/multiroom/mpd/mpd.conf:/etc/mpd.conf
+    ports: 
+      - 36602:6600
+    networks:
+      - proxy-local
+    restart: unless-stopped
+
+  radio:
+    image: registry.local:5000/radio
+    build: ./radio
+    volumes:
+      - /data/swarm/multiroom/radio/radio_supervisor.py:/root/radio_supervisor.py
+      - /data/swarm/multiroom/radio/radio_supervisor2.py:/root/radio_supervisor2.py
+      - /data/swarm/multiroom/radio/radio_supervisor2.sh:/root/radio_supervisor2.sh
+    networks:
+      - proxy-local
+    restart: unless-stopped
+
+  pifi:
+    image: registry.local:5000/pifi
+    build: ./pifi.radio
+    depends_on:
+      - radio
+    ports: 
+      - 3000
+    volumes:
+      - /data/swarm/multiroom/pifi.radio/streams.json:/etc/pifi/streams.json
+      - /data/swarm/multiroom/pifi.radio/config.json:/etc/pifi/config.json
+    networks:
+      - proxy-local
+    restart: unless-stopped
+
+  mpdfm:
+    image: registry.local:5000/mpdfm
+    build: ./mpd.fm
+    depends_on:
+      - radio
+    environment:
+      - MPD_HOST=mpd
+      - MPD_PORT=6600
+      - PORT=4200
+      - STATION_FILE=/app/stations.json
+    ports: 
+      - 4200
+    volumes:
+      - /data/swarm/multiroom/mpd.fm/stations.json:/app/stations.json
+    networks:
+      - proxy-local
+    restart: unless-stopped
+   
+  snapserver:
+    image: registry.local:5000/snapserver
+    build: ./snapserver
+    network_mode: host
+    ports:
+      - "1704:1704"
+      - "1705:1705"
+    environment:
+      - SERVICE_NAME=Snapcast  # for Avahi container
+      - SERVICE_PORT=1704  # for Avahi container
+      - SERVICE_TYPE=_snapcast._tcp  # for Avahi container
+    volumes:
+        - /data/swarm/multiroom/snapserver/snapserver.conf:/etc/snapserver.conf
+        - fifo:/fifo/
+    restart: unless-stopped
+
+  snapcastr:
+    image: registry.local:5000/snapcastr
+    build: ./snapcastr
+    ports:
+      - 5011:5011
+    environment:
+      - SNAPCAST_HOST=192.168.2.6
+    networks:
+      - proxy-local
+    restart: unless-stopped
+
+  snapchanger:
+    image: registry.local:5000/snapchanger
+    build: ./snapchanger
+    environment:
+      - SNAPCAST_HOST=192.168.2.6
+    volumes:
+      - /data/swarm/multiroom/snapchanger/snapchanger.py:/root/snapchanger.py
+      - /data/swarm/multiroom/snapchanger/snapchanger.sh:/root/snapchanger.sh
+    restart: unless-stopped
+
+  snapcron:
+    image: registry.local:5000/snapcron
+    build: ./snapcron
+    environment:
+      - SNAPCAST_HOST=192.168.2.6
+    volumes:
+      - /data/swarm/multiroom/snapcron/crontab:/etc/crontabs/root
+      - /data/swarm/multiroom/snapcron/scripts:/scripts
+    restart: unless-stopped
+
+  shairportSync-main:
+    restart: always
+    image: kevineye/shairport-sync
+    network_mode: host
+    environment:
+      - AIRPLAY_NAME=Multiroom
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - fifo:/fifo
+    command:
+      - -p
+      - "5001"
+      - -o
+      - pipe
+      - --
+      - /fifo/snapfifo.shairport
+    restart: unless-stopped
+
+  plexamp:
+    network_mode: host
+    image: registry.local:5000/plexamp
+    build: ./plexamp
+    ports:
+        - "20000:20000"
+#        - "36600:36600"
+    environment:
+      - TZ=Europe/Moscow
+    volumes:
+        - /data/swarm/multiroom/plexamp/config:/root/.config/Plexamp
+        - fifo:/fifo/
+        - /data/swarm/multiroom/plexamp/mpd.conf:/etc/mpd.conf
+    restart: unless-stopped
+
+  mopidy:
+    image: whhoesj/mopidy
+#    image: registry.local:5000/mopidy
+#    build: ./mopidy
+    ports:
+        - "6680:6680"
+        - "6681:6681"
+        - "6600:6600"
+    volumes:
+        - fifo:/fifo/
+        - /data/swarm/multiroom/mopidy/data:/var/lib/mopidy
+        - /shares/music:/media:ro
+        - /data/swarm/multiroom/mopidy/mopidy.conf:/etc/mopidy.conf
+    networks:
+        - proxy-local
+    restart: unless-stopped
+
+  upmpdcli:
+    image: registry.local:5000/upmpdcli
+    build: ./upmpdcli
+    network_mode: host
+    environment:
+      - TZ=Europe/Moscow
+    volumes:
+      - /data/swarm/multiroom/upmpdcli/mpd.conf:/etc/mpd.conf
+      - fifo:/fifo/
+    restart: unless-stopped
+
+
+
+volumes:
+  fifo:
+
+networks:
+  proxy-local:
+    external: true    

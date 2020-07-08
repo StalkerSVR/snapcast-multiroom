@@ -1,0 +1,2 @@
+#! /bin/bash
+/usr/bin/mopidy --config /etc/mopidy.conf:/mopidy.conf local scan

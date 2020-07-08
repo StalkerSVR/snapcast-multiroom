@@ -1,0 +1,4 @@
+#45 23 * * * /scripts/snapmuteradio.py
+#40 7 * * 1-5 /scripts/snapunmuteradio.py
+#30 8 * * 6,0 /scripts/snapunmuteradio.py
+

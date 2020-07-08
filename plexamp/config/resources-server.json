@@ -1,0 +1,167 @@
+{
+  "tv.plex.provider.music": {
+    "name": "TIDAL",
+    "clientIdentifier": "tv.plex.provider.music",
+    "provides": "provider",
+    "accessToken": "uzTAGiPj8zGGHgLyjsxF",
+    "connections": [
+      {
+        "local": false,
+        "uri": "https://music.provider.plex.tv"
+      }
+    ],
+    "connection": {
+      "local": false,
+      "uri": "https://music.provider.plex.tv"
+    },
+    "libraries": [
+      {
+        "title": "TIDAL",
+        "type": "artist",
+        "hubKey": "/hubs/sections/tidal"
+      }
+    ]
+  },
+  "2f2c6d7023cdf9d12d65a2f2da251ffecdc11115": {
+    "name": "hserv",
+    "clientIdentifier": "2f2c6d7023cdf9d12d65a2f2da251ffecdc11115",
+    "provides": "server",
+    "owned": true,
+    "accessToken": "uzTAGiPj8zGGHgLyjsxF",
+    "presence": false,
+    "platform": "Linux",
+    "cert": "*.39aa85ee875b433bba78fbeabf33800d.plex.direct",
+    "semVer": "1.18.4",
+    "connections": [
+      {
+        "local": true,
+        "relay": false,
+        "uri": "https://127.0.0.1:32400"
+      },
+      {
+        "local": true,
+        "relay": false,
+        "uri": "https://192.168.2.6:32400"
+      },
+      {
+        "local": true,
+        "relay": false,
+        "uri": "https://172.21.0.1:32400"
+      },
+      {
+        "local": true,
+        "relay": false,
+        "uri": "https://172.25.0.1:32400"
+      },
+      {
+        "local": false,
+        "relay": false,
+        "uri": "http://stalkersvr.ru:32400"
+      },
+      {
+        "local": false,
+        "relay": false,
+        "uri": "https://212.12.27.115:32400"
+      }
+    ],
+    "libraries": [
+      {
+        "key": "3",
+        "title": "Movies",
+        "type": "movie"
+      },
+      {
+        "key": "4",
+        "title": "Music",
+        "type": "artist"
+      },
+      {
+        "key": "5",
+        "title": "Photos",
+        "type": "photo"
+      },
+      {
+        "key": "2",
+        "title": "TV Shows",
+        "type": "show"
+      }
+    ],
+    "connection": {
+      "local": true,
+      "relay": false,
+      "uri": "https://127.0.0.1:32400"
+    }
+  },
+  "0cb1f53039c233d8-com-plexapp-android": {
+    "name": "FF-5000",
+    "clientIdentifier": "0cb1f53039c233d8-com-plexapp-android",
+    "provides": "player,pubsub-player,controller,sync-target",
+    "owned": true,
+    "presence": false,
+    "platform": "Android",
+    "semVer": "7.27.0",
+    "connections": [
+      {
+        "local": true,
+        "relay": false,
+        "uri": "http://192.168.0.101:32500"
+      }
+    ],
+    "libraries": []
+  },
+  "fda195dc-df89-4fcb-a86c-775bf1c40073": {
+    "name": "Snapserver",
+    "capabilities": [
+      "timeline",
+      "playback",
+      "playqueues",
+      "playqueues-creation"
+    ],
+    "clientIdentifier": "fda195dc-df89-4fcb-a86c-775bf1c40073",
+    "provides": "client,player,pubsub-player",
+    "owned": true,
+    "presence": false,
+    "platform": "Plexamp",
+    "semVer": "1.0",
+    "connections": [
+      {
+        "local": true,
+        "relay": false,
+        "uri": "http://192.168.2.6:20000"
+      },
+      {
+        "local": true,
+        "relay": false,
+        "uri": "http://172.21.0.1:20000"
+      },
+      {
+        "local": true,
+        "relay": false,
+        "uri": "http://172.25.0.1:20000"
+      }
+    ],
+    "connection": {
+      "local": true,
+      "relay": false,
+      "uri": "http://192.168.2.6:20000"
+    },
+    "libraries": []
+  },
+  "32B6E46D-C015-47C9-BF93-349470C8F6FD": {
+    "name": "EliPhone",
+    "clientIdentifier": "32B6E46D-C015-47C9-BF93-349470C8F6FD",
+    "provides": "client,controller,sync-target,player,pubsub-player,provider-playback",
+    "owned": true,
+    "presence": false,
+    "platform": "iOS",
+    "semVer": "6.6",
+    "connections": [
+      {
+        "local": true,
+        "relay": false,
+        "uri": "http://192.168.2.223:32500"
+      }
+    ],
+    "libraries": []
+  }
+}
