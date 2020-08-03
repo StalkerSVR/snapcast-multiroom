@@ -1,7 +1,7 @@
 #https://github.com/florianheinemann/MPD.FM
 FROM node:12
 
-ENV MPD_HOST=mpd
+ENV MPD_HOST=mpd-radio
 ENV MPD_PORT=6600
 ENV PORT=4200
 ENV STATION_FILE=/app/stations.json

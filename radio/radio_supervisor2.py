@@ -21,7 +21,7 @@ server = loop.run_until_complete(snapcast.control.create_server(loop, snapserver
 if (check_stream(server,radio_stream)==False):
   client = mpd.MPDClient(use_unicode=True)
   print ("Connecting to mpd-radio:6600")
-  client.connect("mpd", 6600)
+  client.connect("mpd-radio", 6600)
   print ("Connected")
   if client.status()['state'] == "play":
     print ("Stopping")

@@ -5,10 +5,10 @@ from time import sleep
 #import mpd
 
 client_conf = [
-["speaker2",[["default",1,100],["AirPlay",3,100],["Mopidy",5,100],["Plexamp",4,100],["uPnP",6,100],["Radio",7, 100]]],
-["speaker1",[["default",1, 50],["AirPlay",3,100],["Mopidy",5,100],["Plexamp",4,100],["uPnP",6,100],["Radio",7,100]]],
-["kodi-2",  [["default",1, 50],["AirPlay",3,100],["Mopidy",5,100],["Plexamp",4,100],["uPnP",6,100],["Radio",7,100]]],
-["kodi-1",  [["default",1, 50],["AirPlay",2,100],["Mopidy",4,100],["Plexamp",3,100]]]]
+["speaker2",[["default",1,100],["default_Kitchen",1,60],["AirPlay",3,100],["Mopidy",5,100],["Plexamp",4,100],["uPnP",6,100],["Radio",7, 100]]],
+["speaker1",[["default",1, 50],["default_Hall",1,60],["AirPlay",3,100],["Mopidy",5,100],["Plexamp",4,100],["uPnP",6,100],["Radio",7,100]]],
+["kodi-2",  [["default",1, 50],["default_Room",1,60],["AirPlay",3,100],["Mopidy",5,100],["Plexamp",4,100],["uPnP",6,100],["Radio",7,100]]],
+["kodi-1",  [["default",1, 50],["default_Zal",1,60],["AirPlay",2,100],["Mopidy",4,100],["Plexamp",3,100]]]]
 
 def check_stream(server, stream_name):
   for stream in server.streams:
@@ -67,7 +67,10 @@ def update_streams():
 #client = server.clients[0]
 #loop.run_until_complete(server.client_volume(client.identifier, {'percent': 50, 'muted': False}))
 
-loop = asyncio.get_event_loop()
-server = loop.run_until_complete(snapcast.control.create_server(loop, 'snapserver.local', reconnect=False))
-update_streams()
-sleep(1)
+try:
+  loop = asyncio.get_event_loop()
+  server = loop.run_until_complete(snapcast.control.create_server(loop, 'snapserver.local', reconnect=True))
+  update_streams()
+except:
+  a=1
+sleep(0.1)

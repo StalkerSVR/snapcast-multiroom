@@ -1,5 +1,5 @@
 {
-  "mpd_host": "mpd",
+  "mpd_host": "mpd-radio",
   "mpd_port": 6600,
   "mpd_password": "",
   "streams_path": "/etc/pifi/streams.json",

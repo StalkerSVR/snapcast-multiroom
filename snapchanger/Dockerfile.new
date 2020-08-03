@@ -1,0 +1,5 @@
+FROM debian:10
+RUN apt update && apt-get install -y python3-pip && pip3 install snapcast
+COPY snapchanger.sh /root/snapchanger.sh
+COPY snapchanger.py /root/snapchanger.py
+ENTRYPOINT ["sh", "/root/snapchanger.sh"]

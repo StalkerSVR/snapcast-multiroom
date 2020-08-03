@@ -1,6 +1,6 @@
 {
   "tv.plex.provider.music": {
-    "name": "TIDAL",
+    "name": "Music",
     "clientIdentifier": "tv.plex.provider.music",
     "provides": "provider",
     "accessToken": "uzTAGiPj8zGGHgLyjsxF",
@@ -31,7 +31,7 @@
     "presence": false,
     "platform": "Linux",
     "cert": "*.39aa85ee875b433bba78fbeabf33800d.plex.direct",
-    "semVer": "1.18.4",
+    "semVer": "1.19.5",
     "connections": [
       {
         "local": true,
@@ -41,17 +41,27 @@
       {
         "local": true,
         "relay": false,
+        "uri": "https://192.168.2.39:32400"
+      },
+      {
+        "local": true,
+        "relay": false,
         "uri": "https://192.168.2.6:32400"
       },
       {
         "local": true,
         "relay": false,
-        "uri": "https://172.21.0.1:32400"
+        "uri": "https://172.20.0.1:32400"
       },
       {
         "local": true,
         "relay": false,
-        "uri": "https://172.25.0.1:32400"
+        "uri": "https://192.168.96.1:32400"
+      },
+      {
+        "local": true,
+        "relay": false,
+        "uri": "https://172.30.0.1:32400"
       },
       {
         "local": false,
@@ -64,6 +74,11 @@
         "uri": "https://212.12.27.115:32400"
       }
     ],
+    "connection": {
+      "local": true,
+      "relay": false,
+      "uri": "https://127.0.0.1:32400"
+    },
     "libraries": [
       {
         "key": "3",
@@ -85,12 +100,7 @@
         "title": "TV Shows",
         "type": "show"
       }
-    ],
-    "connection": {
-      "local": true,
-      "relay": false,
-      "uri": "https://127.0.0.1:32400"
-    }
+    ]
   },
   "0cb1f53039c233d8-com-plexapp-android": {
     "name": "FF-5000",
@@ -99,12 +109,12 @@
     "owned": true,
     "presence": false,
     "platform": "Android",
-    "semVer": "7.27.0",
+    "semVer": "8.3.1",
     "connections": [
       {
         "local": true,
         "relay": false,
-        "uri": "http://192.168.0.101:32500"
+        "uri": "http://192.168.0.100:32500"
       }
     ],
     "libraries": []
@@ -132,12 +142,22 @@
       {
         "local": true,
         "relay": false,
-        "uri": "http://172.21.0.1:20000"
+        "uri": "http://192.168.2.39:20000"
       },
       {
         "local": true,
         "relay": false,
-        "uri": "http://172.25.0.1:20000"
+        "uri": "http://172.20.0.1:20000"
+      },
+      {
+        "local": true,
+        "relay": false,
+        "uri": "http://172.18.0.1:20000"
+      },
+      {
+        "local": true,
+        "relay": false,
+        "uri": "http://172.30.0.1:20000"
       }
     ],
     "connection": {
@@ -147,21 +167,65 @@
     },
     "libraries": []
   },
-  "32B6E46D-C015-47C9-BF93-349470C8F6FD": {
-    "name": "EliPhone",
-    "clientIdentifier": "32B6E46D-C015-47C9-BF93-349470C8F6FD",
-    "provides": "client,controller,sync-target,player,pubsub-player,provider-playback",
+  "9cnogon54fn3ejekr1rnwn4a": {
+    "name": "TULA-AELISEEV",
+    "capabilities": [
+      "timeline",
+      "playback",
+      "navigation",
+      "mirror",
+      "playqueues"
+    ],
+    "clientIdentifier": "9cnogon54fn3ejekr1rnwn4a",
+    "provides": "client,player,pubsub-player",
     "owned": true,
+    "accessToken": "uzTAGiPj8zGGHgLyjsxF",
     "presence": false,
-    "platform": "iOS",
-    "semVer": "6.6",
+    "platform": "windows",
+    "cert": "*.39aa85ee875b433bba78fbeabf33800d.plex.direct",
+    "semVer": "1.15.1",
     "connections": [
       {
         "local": true,
         "relay": false,
-        "uri": "http://192.168.2.223:32500"
+        "uri": "https://192.168.2.39:32400"
+      },
+      {
+        "local": true,
+        "relay": false,
+        "uri": "https://192.168.2.6:32400"
+      },
+      {
+        "local": true,
+        "relay": false,
+        "uri": "https://172.20.0.1:32400"
+      },
+      {
+        "local": true,
+        "relay": false,
+        "uri": "https://192.168.96.1:32400"
+      },
+      {
+        "local": true,
+        "relay": false,
+        "uri": "https://172.30.0.1:32400"
+      },
+      {
+        "local": false,
+        "relay": false,
+        "uri": "http://stalkersvr.ru:32400"
+      },
+      {
+        "local": false,
+        "relay": false,
+        "uri": "https://212.12.27.115:32400"
       }
     ],
+    "connection": {
+      "local": true,
+      "relay": false,
+      "uri": "https://192.168.2.39:32400"
+    },
     "libraries": []
   }
 }

@@ -39,7 +39,7 @@ def get_needed_volume():
 
 client = mpd.MPDClient(use_unicode=True)
 print ("Connecting to mpd-radio:6600")
-client.connect("mpd", 6600)
+client.connect("mpd-radio", 6600)
 print ("Connected")
 client.stop()
 client.setvol(get_init_volume())
@@ -47,13 +47,22 @@ client.setvol(get_init_volume())
 while True:
   needed=get_needed()
   vol=get_needed_volume()
-  if current != needed or client.status()['state'] == 'stop':
+  if current != needed and client.status()['state'] != 'stop':
 #      client.clear()
       current=needed
       client.addid(current,0)
       print ("Restart playing: "+current)
       client.play(0)
       client.delete(1)
+
+  if client.status()['state'] == 'stop':
+      client.clear()
+      current=needed
+      client.addid(current,0)
+      print ("Restart playing: "+current)
+      client.play(0)
+
+
   if vol != 999 and vol != client.status()['volume']:
      client.setvol(vol) 
   sleep(0.1)
